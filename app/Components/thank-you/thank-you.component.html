@@ -1,0 +1,44 @@
+
+<section id="wrapper" class="login-register login-driver">
+	<div class="login-box card">
+		<div class="card-body thank-you-box">
+			<div class="heading">
+				<h4>Thank You</h4>
+			</div>
+			<div class="rating">
+				<p>Help us improve our service. Please take a second and rate us</p>
+					<!-- <a *ngFor="let item of starList; let i=index " (click)="setStar(i)">  
+						<i *ngIf="item" class="fa fa-star-o"></i>    
+						<i *ngIf="!item" class="fa fa-star"></i>   
+					</a>  
+					<br>  
+					Rating :- {{rating}} stars --> 	
+				<table class="table"> 				
+					<tr *ngFor="let record of recordList">  
+						<td class="b-t">{{record.Title}}</td>  
+						<td class="b-t">  
+							<a *ngFor="let item of record.starList; let i=index " (click)="setStarTable(record,i)">  
+								<i class="fa" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>  
+							</a>  
+						</td>  
+					</tr>  
+				</table> 
+				<div class="b-t p-t-10">
+					<div class="form-group">
+						<textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Comment"></textarea>
+					</div>
+				</div>
+				 <div class="row">
+				 <div class="col-md-5 offset-md-8">
+				 	<div class="button-group">
+				 		<a routerLink="/bookingpage" routerLinkActive="active-link" class="later-btn"><!-- <button type="button" class="btn waves-effect waves-light">Later</button> -->Later</a>
+                        <a routerLink="/bookingpage" routerLinkActive="active-link"><button type="button" class="btn waves-effect waves-light">Done</button></a>
+				 	</div>
+				 </div>
+				 </div> 
+			</div>
+		
+		</div>
+	</div>
+</section> 
+<router-outlet></router-outlet>  

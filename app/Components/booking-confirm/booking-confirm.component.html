@@ -1,0 +1,108 @@
+<app-header></app-header>
+<app-left-sidebar></app-left-sidebar>
+
+<!-- ============================================================== -->
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+	<!-- ============================================================== -->
+	<!-- Container fluid  -->
+	<!-- ============================================================== -->
+	<div class="container-fluid">
+		<!-- ============================================================== -->
+		<!-- Bread crumb and right sidebar toggle -->
+		<!-- ============================================================== -->
+		<div class="row page-titles">
+			<div class="col-md-5 align-self-center">
+				<h4 class="text-themecolor">Confirm Booking</h4>
+			</div>
+			<div class="col-md-7 align-self-center text-right">
+				<div class="d-flex justify-content-end align-items-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+						<!-- <li class="breadcrumb-item active">Confirm Booking</li> -->
+					</ol>
+				</div>
+			</div>
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Bread crumb and right sidebar toggle -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- Start Page Content -->
+		<!-- ============================================================== -->
+		<!-- Card -->
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title veh-name">Auto</h5>
+				<h5 class="card-title veh-name">2 min away</h5>
+				<agm-map [latitude]="lat" [longitude]="lng">
+					<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+				</agm-map>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-body">
+						<form action="" method="post">
+							<div class="form-body">
+								<div class="row">
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">Base Price:</label>
+											<div class="col-6">
+												<p class="form-control-static"> 100 </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">No.of Helper:</label>
+											<div class="col-6">
+												<p class="form-control-static"> 2 </p>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">Helper Price:</label>
+											<div class="col-6">
+												<p class="form-control-static"> 50 </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">Driver Info name:</label>
+											<div class="col-6">
+												<p class="form-control-static"> Nayana </p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-actions">
+								<a routerLink="/bookingpage" routerLinkActive="active-link"><button type="submit"  class="btn waves-effect waves-light btn-block" id="invoice-success"> <i class="fa fa-check"></i> Confirm</button></a>
+								<button type="button" (click)="canceltrip()" class="btn btn-inverse"> <i class="fa fa-times"></i> Cancel </button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- Card End -->
+	<!-- ============================================================== -->
+	<!-- End PAge Content -->
+	<!-- ============================================================== -->
+	</div>
+</div>
+<app-right-sidebar></app-right-sidebar>
+<app-footer></app-footer>

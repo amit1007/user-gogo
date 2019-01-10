@@ -1,0 +1,267 @@
+<app-header></app-header>
+<app-left-sidebar></app-left-sidebar>
+<div class="page-wrapper">
+	<div class="container-fluid">
+			<div id="pick-form" class="card">
+				<div class="card-body">
+					<form class="form-horizontal" [formGroup]="signupform" id="signupform" action="#" method="post">
+						<div class="form-group row">
+							<div class="col-sm-12 col-xs-12">
+								<label class="control-label left-fc">From</label>
+								<div class="right-fc">
+									<input type="text" class="form-control r-input"> 
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+                            <div class="col-sm-12 col-xs-12">
+                                <div formArrayName="itemRows">
+                                    <div *ngFor="let itemrow of itemRows.controls; let i=index" [formGroupName]="i">
+                                        <label class="control-label mb-b left-fc">Loc {{ i + 1 }}</label>
+                                        <div class="right-fc mb-b">
+                                            <div class="input-group">
+                                                <!-- <input type="text" class="form-control r-input"> -->
+                                                <input formControlName="itemname"  class="form-control r-input">
+                                                <div class="input-group-append">
+                                                    <button class="btn" type="button" (click)="addNewRow()"><i class="fa fa-plus"></i></button>
+                                                </div>
+                                                <button *ngIf="i >= 1" (click)="deleteRow(i)" class="btn btn-danger"><i class="fa fa-minus"></i></button>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group row">
+							<div class="col-sm-12 col-xs-12">
+								<label class="control-label left-fc">When</label>
+								<div class="right-fc">
+									<select class="form-control r-input">
+										<option selected="selected">Now</option>
+										<option> Schedule for later</option>
+									</select>
+								</div>
+							</div>						
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-12 col-xs-12">
+								<label class="control-label left-fc">Depart</label>
+								<div class="right-fc">									
+									<div class="right-half">
+										<input type="date" class="form-control r-input"> 
+									</div>
+									<div class="right-half">
+										<input type="time" class="form-control" value="00:00"> 
+									</div>
+								</div>
+								
+							</div>
+						</div>												
+					</form>
+				</div>
+			</div>
+			<div id="map-canvas">
+				<agm-map 
+					[latitude]="lat"
+					[longitude]="lng"
+					[zoom]="zoom"
+					[disableDefaultUI]="false"
+					[zoomControl]="false"
+					(mapClick)="mapClicked($event)">
+
+					<agm-marker 
+						*ngFor="let m of markers; let i = index"
+						(markerClick)="clickedMarker(m.label, i)"
+						[latitude]="m.lat"
+						[longitude]="m.lng"
+						[label]="m.label"
+						[iconUrl]="icon"
+						[markerDraggable]="m.draggable"
+						(dragEnd)="markerDragEnd(m, $event)">
+				  
+						<agm-info-window>
+							
+							<strong>5 min</strong><br>
+							<hr>
+							<strong>Rs. 500</strong>
+						</agm-info-window>
+					</agm-marker>
+
+					<!-- <agm-circle [latitude]="lat + 0.3" [longitude]="lng" 
+						[radius]="5000"
+						[fillColor]="'red'"
+						[circleDraggable]="true"
+						[editable]="true">
+					</agm-circle> -->
+
+				</agm-map>
+			</div>
+
+			 
+
+	</div>
+	
+		<div class="card v-tab">
+					<div class="card-body">
+						<div class="vtabs customvtab">
+							<ul class="nav nav-tabs tabs-vertical" role="tablist">
+								<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#open" role="tab"><!-- <span class="hidden-sm-up"></span> --> <span class="hidden-xs-down">Open</span> </a> </li>
+								<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#closed" role="tab"><!-- <span class="hidden-sm-up"><i class="ti-user"></i></span> --> <span class="hidden-xs-down">Closed</span></a> </li>
+								<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#any" role="tab"><!-- <span class="hidden-sm-up"><i class="ti-email"></i></span> --> <span class="hidden-xs-down">Any</span></a> </li>
+							</ul> 
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div class="tab-pane active" id="open" role="tabpanel">
+								<div class="text-center vehicle">
+									<div class="txt">2 min</div>
+									<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape"></a>
+									<div class="txt">piago ape (5)</div>
+								</div>
+								<div class="text-center vehicle">
+									<div class="txt">4 min</div>
+									<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape"></a>
+									<div class="txt">tata ace (3)</div>
+								</div>
+								<div class="text-center vehicle">
+									<div class="txt">Not Available</div>
+									<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape"></a>
+									<div class="txt">piago ape</div>
+								</div>
+								<div class="text-center vehicle">
+									<div class="txt">6 min</div>
+									<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape" class="active"></a>
+									<div class="txt">tata ace (1)</div>
+								</div>
+								<div class="text-center vehicle">
+									<div class="txt">1 min</div>
+									<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape"></a>
+									<div class="txt">piago ape (3)</div>
+								</div>
+							</div>
+							<div class="tab-pane" id="closed" role="tabpanel">
+								<div class="text-center vehicle">
+									<div class="txt">2 min</div>
+									<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape"></a>
+									<div class="txt">piago ape</div>
+								</div>
+								<div class="text-center vehicle">
+									<div class="txt">4 min</div>
+									<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape"></a>
+									<div class="txt">tata ace</div>
+								</div>
+								<div class="text-center vehicle">
+									<div class="txt">5 min</div>
+									<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape"></a>
+									<div class="txt">piago ape</div>
+								</div>
+							</div>
+							<div class="tab-pane" id="any" role="tabpanel">
+								<div class="text-center vehicle">
+									<div class="txt">2 min</div>
+									<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape"></a>
+									<div class="txt">piago ape</div>
+								</div>
+								<div class="text-center vehicle">
+									<div class="txt">4 min</div>
+									<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape"></a>
+									<div class="txt">tata ace</div>
+								</div>
+								<div class="text-center vehicle">
+									<div class="txt">5 min</div>
+									<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape"></a>
+									<div class="txt">piago ape</div>
+								</div>
+								<div class="text-center vehicle">
+									<div class="txt">2 min</div>								<a data-toggle="modal" data-target="#vehicleModal" data-whatever="@fat"><img src="../../assets/images/truck.png" alt="piago ape"></a>
+									<div class="txt">piago ape</div>
+								</div>
+								
+							</div>
+						</div>
+						</div>	
+					</div>
+		</div> 
+				
+		<div class="form-group text-center book-btn">
+			<a routerLink="/bookridedetails" routerLinkActive="active-link"><button class="btn waves-effect waves-light btn-block" type="submit">Next</button></a>
+		</div>
+	
+	<!--modal start-->
+			<div class="modal fade" id="vehicleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header"> 
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						</div>
+						<div class="modal-body">
+							<h4>Vehicle Details</h4>
+							<form class="form-horizontal" id="signupform" action="#" method="post">
+								<div class="form-group row">
+									<div class="col-sm-12 col-xs-12 mb-b">
+										<label class="control-label left-fc">Width</label>
+										<div class="right-fc">
+											<input type="text" class="form-control r-input"> 
+										</div>
+									</div>
+									<div class="col-sm-12 col-xs-12 mb-b">
+										<label class="control-label left-fc">Height</label>
+										<div class="right-fc">
+											<input type="text" class="form-control r-input"> 
+										</div>
+									</div>
+									<div class="col-sm-12 col-xs-12 mb-b">
+										<label class="control-label left-fc">Lenght</label>
+										<div class="right-fc">
+											<input type="text" class="form-control r-input"> 
+										</div>
+									</div>
+									<div class="col-sm-12 col-xs-12 mb-b">
+										<label class="control-label left-fc">Capacity</label>
+										<div class="right-fc">
+											<input type="text" class="form-control r-input"> 
+										</div>
+									</div>
+									<div class="col-sm-12 col-xs-12 mb-b">
+										<label class="control-label left-fc">Base Fare Price<span class="fas fa-rupee-sign"></span></label>
+										<div class="right-fc">
+											<input type="text" class="form-control r-input"> 
+										</div>
+									</div>
+									<div class="col-sm-12 col-xs-12 mb-b">
+										<label class="control-label left-fc">Rate/min<span class="fas fa-rupee-sign"></span></label>
+										<div class="right-fc">
+											<input type="text" class="form-control r-input"> 
+										</div>
+									</div>
+								</div>
+							</form>
+						
+							<!-- <div class="row">
+									<div class="col-md-6">
+										<label class="control-label">Width:</label>
+										<input type="text" class="form-control" value="5 ft" readonly>
+
+										<label class="control-label">Length:</label>
+										<input type="text" class="form-control" value="7 ft" readonly>
+
+										<label class="control-label">Base Fare Price: <span class="fas fa-rupee-sign"></span></label>
+										<input type="text" class="form-control" value="99" readonly>
+									</div>
+									<div class="col-md-6">
+										<label class="control-label">Height:</label>
+										<input type="text" class="form-control" value="6 ft"readonly>
+										
+										<label class="control-label">Capacity:</label>
+										<input type="text" class="form-control" value="0.75 tons" readonly>
+
+										<label class="control-label">Rate/min: <span class="fas fa-rupee-sign"></span></label>
+										<input type="text" class="form-control" value="4"readonly>
+									</div>
+								</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--modal end-->
+</div>
+

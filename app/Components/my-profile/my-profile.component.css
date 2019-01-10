@@ -1,0 +1,7 @@
+.user-p-photo img{width: 20%;}
+@media (min-width: 768px){
+		.user-p-photo img{
+			float: left;
+			margin-right: 5%;
+		}
+	}

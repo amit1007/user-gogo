@@ -1,0 +1,42 @@
+		<!-- ============================================================== -->
+		<!-- Left Sidebar - style you can find in sidebar.scss  -->
+		<!-- ============================================================== -->
+<aside class="left-sidebar">
+			<!-- Sidebar scroll-->
+			<div class="scroll-sidebar">
+				<!-- User Profile-->
+				<div class="user-profile">
+					<div class="user-pro-body">
+						<div class="text-center"><a class="waves-effect waves-dark" routerLink="/myprofile" routerLinkActive="active" aria-expanded="false"><img src="../assets/node_modules/dropify/src/images/driver-img.jpg" alt="user-img" class="img-circle"></a></div>
+						<div class="text-center">
+							<a class="waves-effect waves-dark" routerLink="/myprofile" routerLinkActive="active" aria-expanded="false">Hanna Gover</a>
+						</div>
+					</div>
+				</div>
+				<!-- Sidebar navigation-->
+				<nav class="sidebar-nav">
+					<ul id="sidebarnav">
+						<li> <a class="waves-effect waves-dark" routerLink="/bookrides" routerLinkActive="active" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Book Ride</span></a></li>
+						<li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-truck"></i><span class="hide-menu">My Rides</span></a>
+							<ul aria-expanded="false" class="collapse">
+								<li><a routerLink="/active-ride" routerLinkActive="active">Active Ride</a></li>
+								<li><a routerLink="/past-ride" routerLinkActive="active">Past Ride</a></li>
+							</ul>
+						</li>
+						<li> <a class="waves-effect waves-dark" routerLink="/thankyou" routerLinkActive="active" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Thank You</span></a></li>
+					  <!--  <li> <a class="waves-effect waves-dark" routerLink="/thankyou" routerLinkActive="active" aria-expanded="false"><i class=" fas fa-rupee-sign"></i></i><span class="hide-menu">Thank you</span></a></li> -->
+						<!-- <li> <a class="waves-effect waves-dark" routerLink="/" routerLinkActive="active" aria-expanded="false"><i class="far fa-circle text-success"></i><span class="hide-menu">Log Out</span></a></li> -->
+						
+					</ul>
+				</nav>
+				<!-- End Sidebar navigation -->
+			</div>
+			<!-- End Sidebar scroll-->
+		</aside>
+		<!-- ============================================================== -->
+		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+		<!-- ============================================================== -->
+
+<div>	
+	<router-outlet></router-outlet>	
+</div>

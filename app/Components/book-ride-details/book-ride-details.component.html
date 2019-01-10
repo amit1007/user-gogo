@@ -1,0 +1,174 @@
+<app-header></app-header>
+<app-left-sidebar></app-left-sidebar>
+<div class="page-wrapper">
+	<div class="container-fluid">
+		<div class="row page-titles">
+			<div class="col-md-5 align-self-center">
+				<h4 class="text-themecolor">Book Ride Details</h4>
+			</div>
+			<div class="col-md-7 align-self-center text-right">
+				<div class="d-flex justify-content-end align-items-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+						<li class="breadcrumb-item active">Booking Ride Details</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+		<!---------------Tap Pannel-------------->
+		<div class="row">
+			<div class="col-lg-12 col-md-6">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Booking Details</h4>
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#helper" role="tab"><span class="hidden-sm-up" style="color:#4F5467;"></span><span class="hidden-xs-down">Helper</span></a> </li>
+							<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#vehicle_details" role="tab" style="color:#4F5467;"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Vehicle Details</span></a> </li>
+						</ul>
+						<div class="tab-content tabcontent-border">
+							<div id="helper" class="tab-pane active p-20" role="tabpanel">
+								<div class="row">
+									<div class="col-lg-3">
+									   <p>Number of helper required:</p>
+									</div>
+
+									<div class="col-lg-4">
+									<form>
+										<div class="form-group">
+											<div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
+											<span class="input-group-btn input-group-prepend"><button class="btn btn-secondary btn-outline bootstrap-touchspin-down" type="button">
+												-
+											</button></span><input id="tch3" type="text" value="" name="tch3" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" class="form-control" value="2">
+											<span class="input-group-btn input-group-append"><button class="btn btn-secondary btn-outline bootstrap-touchspin-up" type="button">+</button></span>
+											</div>
+										</div>
+									</form>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-3">
+									   <p>Price per helper: <span class="fas fa-rupee-sign"></span></p>
+									</div>
+
+									<div class="col-lg-4">
+									   <input _ngcontent-c1="" class="form-control" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" id="" name="" type="text" value="100">
+									</div>
+								</div>
+							</div>
+							<div id="vehicle_details" class="tab-pane p-20" role="tabpanel">
+								<div class="row">
+									<div class="col-md-6">
+										<label class="control-label">Width:</label>
+										<input type="text" class="form-control" value="5 ft" readonly>
+
+										<label class="control-label">Length:</label>
+										<input type="text" class="form-control" value="7 ft" readonly>
+
+										<label class="control-label">Base Fare Price: <span class="fas fa-rupee-sign"></span></label>
+										<input type="text" class="form-control" value="99" readonly>
+									</div>
+									<div class="col-md-6">
+										<label class="control-label">Height:</label>
+										<input type="text" class="form-control" value="6 ft"readonly>
+										
+										<label class="control-label">Capacity:</label>
+										<input type="text" class="form-control" value="0.75 tons" readonly>
+
+										<label class="control-label">Rate/min: <span class="fas fa-rupee-sign"></span></label>
+										<input type="text" class="form-control" value="4"readonly>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-3">
+									<h4 class="card-title"> Select Payment Mode:</h4>
+								</div>
+
+								<div class="col-lg-4">
+									<select class="form-control">
+										<option>Select Mode</option>
+										<option>Cash</option>
+										<option>RazorPay</option>
+									</select>
+								</div>
+							</div> 
+						</div>
+					</div>
+
+					
+					<div class="col-12" style="text-align: center;">
+						<div class="row">
+							<div class="col-md-6">
+								<h4 class="card-title" data-toggle="modal" data-target="#couponModal" data-whatever="@fat"><span class="fas fa-tag"></span> APPLY COUPON</h4>
+							</div>
+							<div class="col-md-6">
+								<h4 class="card-title" data-toggle="modal" data-target="#estimateModal" data-whatever="@mdo"><span class="fas fa-rupee-sign"></span> GET ESTIMATE</h4>
+							</div>
+						</div>
+						<!-- <div class="col-12">
+						<h4 class="card-title"> Select Payment Mode:</h4>
+						<select class="form-control">
+							<option>Select Mode</option>
+							<option>Cash</option>
+							<option>RazorPay</option>
+						</select>
+						</div> --> 
+					
+						<!--estimate modal start-->
+						<div class="modal fade" id="estimateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header"> 
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									</div>
+									<div class="modal-body">
+										<h4>Your Fare Estimate is: <span class="fas fa-rupee-sign"></span> 500 - <span class="fas fa-rupee-sign"></span> 700</h4>
+										<br>
+										<h4>Estimated Time: 50 Mins</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--modal end-->
+			<!--coupon modal start-->
+						<div class="modal fade" id="couponModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header"> 
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									</div>
+									<div class="modal-body">
+										<span class="fas fa-tag"></span>
+										<h4>Enter Coupon Code Here</h4>
+										<input type="text" class="form-control">
+										<br><br>
+										<button type="button" class="btn btn-block btn-lg btn-default" style="background-color: #212529; color:white;">Apply</button>
+										<hr>
+										
+										<h4>Or Select Coupon</h4>
+										<div class="card">
+											<div class="card-body">
+												<h4><span class="fas fa-rupee-sign"></span>
+													50 off
+												</h4>
+												<h5>GoGo50</h5>
+												<p>Expiring On 04 Jan 2019</p>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--modal end-->
+						<br>
+						<a routerLink="/confirmbooking" routerLinkActive="active-link"><button type="submit"  class="btn waves-effect waves-light btn-block" id="invoice-success"> Book Now</button></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!---------------Tap Pannel--------------> 
+	</div>
+</div>
+<app-footer></app-footer>	
